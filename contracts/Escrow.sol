@@ -7,11 +7,13 @@ contract Escrow {
 	address public depositor;
 
 	bool public isApproved;
+    event hasDeployed(address indexed deployer, address indexed contractAddress);
 
 	constructor(address _arbiter, address _beneficiary) payable {
 		arbiter = _arbiter;
 		beneficiary = _beneficiary;
 		depositor = msg.sender;
+        emit hasDeployed(msg.sender, address(this));
 	}
 
 	event Approved(uint);
